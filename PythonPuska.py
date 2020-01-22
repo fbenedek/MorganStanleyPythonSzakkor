@@ -1,4 +1,4 @@
-### Python 3 puska - "cheat sheet ###
+### Python 3 puska - "cheat sheet" ###
 # 
 ## Változók, alapműveletek ##
 # a számítógépben az adatokat "változókban" tároljuk 
@@ -70,20 +70,35 @@ def osszeado(szam1, szam2): # def Függvény neve(bemenetek):
 
 osszeg = osszeado(10,12)
 print(osszeg)
-    
+
+## könyvtárhasználat ##
+
+import time #innentől a "time" könyvtár függvényeit használhatom olyan alakban, hogy time.fgnev
+import datetime as dt #innentől a "datetime" könyvtár függvényeit használhatom olyan alakban, hogy dt.fgnev
+
+jelenlegiIdo = time.time() #egy adott időponttól ("epoch") eltelt mp-ek floatban
+time.sleep(3) # 3 másodpercet várokozhat így a program.
+varkozashossza = time.time() - jelenlegiIdo # így lehet stoppert "építeni"!
 
 
-
-
-    
-
-
-
-
-
-
-
-
+## fájlkezelés ##
+#olvasás#
+with open("fajlom.txt", 'r') as olvasnivalo:
+    #egeszfajl = fajlom.read() - így is lehet, de inkább soronként!
+    for sor in olvasnivalo:
+        print(sor) #beolvasom és kinyomtatom a tartalmát.
+        #ide írhatok bármit, amit művelni akarok a sorral.
+#írás#
+with open("fajlom2.txt", 'w') as irnivalo:
+    irnivalo.write('Hahó!\n') #egy sorba beleírtam, és a végére tettem egy sortörést.
+    #hogyha egyszerre sok sort akarok írni, akkor listát is használhatok:
+    soksorom = ["egy\n", "kettő\n", "spam\n"]  #sortörés kell!
+    irnivalo.writelines(soksorom)
+#ha így írom a fájlt, akkor mindig kitörlöm a tartalmát megnyitáskor, és a 'nulláról' kezdem.
+#hozzáfűzés, 'append'#
+with open("fajlom2.txt", 'a') as nembantomdeirom:
+    nembatomdeirom.write('Sor!\n')
+    #most a "Sor!" nem a fájl első sorába került a többi törlésével, hanem az eddigi utolsó után
 
 
  
